@@ -1,0 +1,5 @@
+num_layers=2, units=[64, 32] | F1=0.3951, threshold=0.905468
+num_layers=3, units=[64, 48, 32] | F1=0.3942, threshold=0.889361
+num_layers=4, units=[64, 48, 32, 16] | F1=0.3955, threshold=0.907596
+Best num_layers = 4, units_per_layer = [64, 48, 32, 16]
+F1=0.7909 | threshold=0.907596

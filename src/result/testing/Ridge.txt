@@ -1,0 +1,23 @@
+[RIDGE] F1-score on test_1 = 0.8528 with threshold = 0.028869
+
+------------------- REPORT FOR RIDGE REGRESSION FOR DATASET 1 -------------------
+              precision  recall  f1-score  support
+
+0.0                0.96    0.97      0.96    16465
+1.0                0.85    0.84      0.85     1968
+
+accuracy                             0.94    18433
+macro avg          0.88    0.90      0.89    18433
+weighted avg       0.93    0.94      0.94    18433
+
+[RIDGE] F1-score on test_2 = 0.8845 with threshold = 0.028720
+
+------------------- REPORT FOR RIDGE REGRESSION FOR DATASET 2 -------------------
+              precision  recall  f1-score  support
+
+0.0                0.96    0.98      0.97     8453
+1.0                0.85    0.89      0.88     1628
+
+accuracy                             0.94    10081
+macro avg          0.91    0.91      0.91    10081
+weighted avg       0.94    0.94      0.94    10081

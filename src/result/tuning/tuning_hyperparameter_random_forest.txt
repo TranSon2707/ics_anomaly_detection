@@ -1,0 +1,2 @@
+F1=0.6678 | threshold=0.053535
+Best F1 = 0.6678 | threshold = 0.053535

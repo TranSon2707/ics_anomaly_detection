@@ -1,0 +1,22 @@
+[RANDOM_FOREST] F1-score on test_1 = 0.6944 with threshold = 0.052444
+
+------------------- REPORT FOR RANDOM FOREST FOR DATASET 1 -------------------
+              precision  recall  f1-score  support
+0.0                0.98    0.93      0.95 16465.00
+1.0                0.59    0.82      0.69  1968.00
+
+accuracy           0.92    0.92      0.92     0.92
+macro avg          0.78    0.88      0.82 18433.00
+weighted avg       0.94    0.92      0.93 18433.00
+
+
+[RANDOM_FOREST] F1-score on test_2 = 0.7003 with threshold = 0.052444
+
+------------------- REPORT FOR RANDOM FOREST FOR DATASET 2 -------------------
+              precision  recall  f1-score  support
+0.0                0.95    0.92      0.94  8453.00
+1.0                0.65    0.76      0.70  1628.00
+
+accuracy           0.90    0.90      0.90     0.90
+macro avg          0.80    0.84      0.82 10081.00
+weighted avg       0.90    0.90      0.90 10081.00
