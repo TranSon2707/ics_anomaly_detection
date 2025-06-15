@@ -20,6 +20,7 @@ import pandas as pd
 def test_evaluation(model_name, number) :
 
     X_test_scaled, Y_test = load_test_data('data/BATADAL', number)
+    X_test_orig = X_test_scaled.copy()  # Preserve original 2D data
 
     model_list = None
     best_f1, best_threshold = 0.0, 0.0
@@ -39,21 +40,49 @@ def test_evaluation(model_name, number) :
         model_list = tuning_ML.best_model_retrive_RF()
     elif model_name == 'xgboost' :
         model_list = tuning_ML.best_model_retrive_XGB()
+    for model in model_list:
+        threshold = model['threshold']
+        X_test_hat = None
 
+        if model_name == 'cnn_ae':
+            # Reshape for CNN: (samples, 1, features)
+            X_test_3d = X_test_scaled.reshape((X_test_scaled.shape[0], 1, X_test_scaled.shape[1]))
+            X_test_hat = model['model'].predict(X_test_3d)
+            X_test_hat = np.squeeze(X_test_hat, axis=1)  # Output to (samples, features)
+            
+        elif model_name == 'lstm_ae':
+            # Reshape for LSTM: (samples, timesteps, features) = (samples, 43, 1)
+            X_test_3d = X_test_scaled.reshape((X_test_scaled.shape[0], X_test_scaled.shape[1], 1))
+            X_test_hat = model['model'].predict(X_test_3d)
+            X_test_hat = np.squeeze(X_test_hat, axis=-1)  # Output to (samples, 43)
+            
+        else:
+            # Other models use 2D data directly
+            X_test_hat = model['model'].predict(X_test_scaled)
+
+        # Calculate reconstruction errors using ORIGINAL 2D data
+        errors = np.mean((X_test_orig - X_test_hat) ** 2, axis=1)
+    
     for model in model_list :
 
         threshold = model['threshold']
+        X_test_hat = None
 
-        if model_name == 'cnn_ae' or model_name == 'lstm_ae':
-            X_test_scaled = X_test_scaled.reshape((X_test_scaled.shape[0], 1, X_test_scaled.shape[1]))
-
-        # Dự đoán trạng thái hệ thống
-        X_test_hat = model['model'].predict(X_test_scaled)
-
-        # Đưa về cùng chiều : (sample_size, 43)
-        if model_name == 'cnn_ae' or model_name == 'lstm_ae':
-            X_test_hat = np.squeeze(X_test_hat, axis=1)
-            X_test_scaled = np.squeeze(X_test_scaled, axis=1)
+        if model_name == 'cnn_ae':
+            # Reshape for CNN: (samples, 1, features)
+            X_test_3d = X_test_scaled.reshape((X_test_scaled.shape[0], 1, X_test_scaled.shape[1]))
+            X_test_hat = model['model'].predict(X_test_3d)
+            X_test_hat = np.squeeze(X_test_hat, axis=1)  # Output to (samples, features)
+            
+        elif model_name == 'lstm_ae':
+            # Reshape for LSTM: (samples, timesteps, features) = (samples, 43, 1)
+            X_test_3d = X_test_scaled.reshape((X_test_scaled.shape[0], X_test_scaled.shape[1], 1))
+            X_test_hat = model['model'].predict(X_test_3d)
+            X_test_hat = np.squeeze(X_test_hat, axis=-1)  # Output to (samples, 43)
+            
+        else:
+            # Other models use 2D data directly
+            X_test_hat = model['model'].predict(X_test_scaled)
 
         # Tính lỗi tái tạo (MSE từng điểm)
         errors = np.mean((X_test_scaled - X_test_hat) ** 2, axis=1)

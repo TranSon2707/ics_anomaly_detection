@@ -1,25 +1,27 @@
-577/577 ━━━━━━━━━━━━━━━━━━━━ 40s 63ms/step
-[LSTM_AE] F1-score on test_1 = 0.6108 with threshold = 0.907596
+577/577 ━━━━━━━━━━━━━━━━━━━━ 17s 25ms/step
+577/577 ━━━━━━━━━━━━━━━━━━━━ 13s 23ms/step
+
+[LSTM_AE] F1-score on test_1 = 0.6790 with threshold = 0.185543
 
 ------------------- REPORT FOR LSTM + AE FOR DATASET 1 -------------------
               precision  recall  f1-score  support
-0.0                0.94    0.99      0.96 16465.00
-1.0                0.85    0.48      0.61  1968.00
-
-accuracy           0.94    0.94      0.94     0.94
-macro avg          0.90    0.73      0.79 18433.00
-weighted avg       0.93    0.94      0.93 18433.00
-
+0.0                0.96    0.96      0.96 16465.00
+1.0                0.67    0.69      0.68  1968.00
+accuracy           0.93    0.93      0.93     0.93
+macro avg          0.82    0.82      0.82 18433.00
+weighted avg       0.93    0.93      0.93 18433.00
 
 
-316/316 ━━━━━━━━━━━━━━━━━━━━ 28s 76ms/step
-[LSTM_AE] F1-score on test_2 = 0.4017 with threshold = 0.907596
+
+316/316 ━━━━━━━━━━━━━━━━━━━━ 9s 26ms/step
+316/316 ━━━━━━━━━━━━━━━━━━━━ 7s 23ms/step
+
+[LSTM_AE] F1-score on test_2 = 0.6951 with threshold = 0.185543
 
 ------------------- REPORT FOR LSTM + AE FOR DATASET 2 -------------------
               precision  recall  f1-score  support
-0.0                0.87    0.99      0.93  8453.00
-1.0                0.86    0.26      0.40  1628.00
-
-accuracy           0.87    0.87      0.87     0.87
-macro avg          0.87    0.63      0.67 10081.00
-weighted avg       0.87    0.87      0.84 10081.00
+0.0                0.93    0.96      0.95  8453.00
+1.0                0.74    0.65      0.70  1628.00
+accuracy           0.91    0.91      0.91     0.91
+macro avg          0.84    0.80      0.82 10081.00
+weighted avg       0.90    0.91      0.91 10081.00
